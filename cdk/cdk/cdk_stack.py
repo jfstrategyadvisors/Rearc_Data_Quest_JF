@@ -18,3 +18,9 @@ class CdkStack(Stack):
             handler="lambda_source_data.handler",
             code=_lambda.Code.from_asset("lambda_source_data"),
         )
+        lambda_analysis = _lambda.Function(
+            self, "AnalysisLambda",
+            runtime=_lambda.Runtime.PYTHON_3_12,
+            handler="lambda_analysis.handler",
+            code=_lambda.Code.from_asset("lambda_analysis"),
+        )
