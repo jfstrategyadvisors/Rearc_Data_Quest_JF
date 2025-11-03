@@ -145,7 +145,7 @@ pandas_layer = _lambda.LayerVersion.from_layer_version_arn(
 
 ### Best Year per Series
 Successfully calculated the best performing year for all series_ids in the dataset
- series_id  year   value
+``` series_id  year   value
  PRS30006011  2022  16.400
  PRS30006012  2022  13.000
  PRS30006013  1998 564.713
@@ -156,10 +156,10 @@ Successfully calculated the best performing year for all series_ids in the datas
  PRS30006032  2021  13.900
  PRS30006033  1998 561.703
  PRS30006061  2022  29.600
-
+```
 ### Series PRS30006032 Report
 Generated report with 10 records including joined population data
-
+```
  series_id    year   period  value  Population
  PRS30006032  2013    Q01    0.5   316128839
  PRS30006032  2014    Q01   -0.1   318857056
@@ -171,7 +171,7 @@ Generated report with 10 records including joined population data
  PRS30006032  2021    Q01    0.7   331893745
  PRS30006032  2022    Q01    5.3   333287562
  PRS30006032  2023    Q01    0.3   334914896
-
+```
 ---
 
 ## Resources & References
