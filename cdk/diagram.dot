@@ -1,0 +1,141 @@
+digraph "Diagram" {
+  splines = "ortho";
+  pad = 1;
+  nodesep = 0.6;
+  ranksep = 0.75;
+  fontname = "Sans-Serif";
+  fontsize = 15;
+  dpi = 200;
+  rankdir = "BT";
+  compound = true;
+  fontcolor = "#222222";
+  edge [
+    color = "#D5871488";
+    penwidth = 2;
+    arrowhead = "dot";
+    arrowtail = "dot";
+  ];
+  node [
+    shape = "box";
+    style = "rounded";
+    fixedsize = true;
+    width = 1.7;
+    height = 1.7;
+    labelloc = "c";
+    imagescale = true;
+    fontname = "Sans-Serif";
+    fontsize = 8;
+    margin = 8;
+  ];
+  subgraph "CdkStack" {
+    subgraph "cluster-SubGraph.CdkStack" {
+      graph [
+        label = "CdkStack";
+        labelloc = "b";
+        labeljust = "l";
+        margin = 10;
+        fontsize = 16;
+        penwidth = 2;
+        pencolor = "#888888";
+        style = "filled,rounded";
+        fillcolor = "#e4e4e4";
+      ];
+      "CdkStack/DataBucket" [
+        label = " DataBucket";
+        fontsize = 12;
+        image = "/Users/joshfinlayson/Documents/GitHub/Rearc_Data_Quest_JF/cdk/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png";
+        imagescale = "true";
+        imagepos = "tc";
+        penwidth = 0;
+        shape = "node";
+        fixedsize = "true";
+        labelloc = "b";
+        width = 2;
+        height = 2.266;
+      ];
+      "CdkStack/DataQueue" [
+        label = " DataQueue";
+        fontsize = 12;
+        image = "/Users/joshfinlayson/Documents/GitHub/Rearc_Data_Quest_JF/cdk/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png";
+        imagescale = "true";
+        imagepos = "tc";
+        penwidth = 0;
+        shape = "node";
+        fixedsize = "true";
+        labelloc = "b";
+        width = 2;
+        height = 2.266;
+      ];
+      "CdkStack/IngestLambda" [
+        label = " IngestLambda";
+        fontsize = 12;
+        image = "/Users/joshfinlayson/Documents/GitHub/Rearc_Data_Quest_JF/cdk/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png";
+        imagescale = "true";
+        imagepos = "tc";
+        penwidth = 0;
+        shape = "node";
+        fixedsize = "true";
+        labelloc = "b";
+        width = 2;
+        height = 2.266;
+      ];
+      "CdkStack/AnalysisLambda" [
+        label = " AnalysisLambda";
+        fontsize = 12;
+        image = "/Users/joshfinlayson/Documents/GitHub/Rearc_Data_Quest_JF/cdk/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png";
+        imagescale = "true";
+        imagepos = "tc";
+        penwidth = 0;
+        shape = "node";
+        fixedsize = "true";
+        labelloc = "b";
+        width = 2;
+        height = 2.266;
+      ];
+      "CdkStack/DailyIngestSchedule" [
+        label = " DailyIngestSchedule";
+        fontsize = 12;
+        image = "/Users/joshfinlayson/Documents/GitHub/Rearc_Data_Quest_JF/cdk/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_Amazon-EventBridge_64@5x.png";
+        imagescale = "true";
+        imagepos = "tc";
+        penwidth = 0;
+        shape = "node";
+        fixedsize = "true";
+        labelloc = "b";
+        width = 1.2;
+        height = 1.466;
+      ];
+      "CdkStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role" [
+        label = " Role";
+        fontsize = 12;
+        image = "/Users/joshfinlayson/Documents/GitHub/Rearc_Data_Quest_JF/cdk/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png";
+        imagescale = "true";
+        imagepos = "tc";
+        penwidth = 0;
+        shape = "node";
+        fixedsize = "true";
+        labelloc = "b";
+        width = 1.2;
+        height = 1.466;
+      ];
+    }
+  }
+  "CdkStack/DataQueue" -> "CdkStack/DataBucket" [
+    dir = "both";
+  ];
+  "CdkStack/IngestLambda" -> "CdkStack/DataBucket" [
+    dir = "both";
+  ];
+  "CdkStack/AnalysisLambda" -> "CdkStack/DataBucket" [
+    dir = "both";
+  ];
+  "CdkStack/AnalysisLambda" -> "CdkStack/DataQueue" [
+    dir = "both";
+  ];
+  "CdkStack/DailyIngestSchedule" -> "CdkStack/IngestLambda" [
+    dir = "both";
+  ];
+  "CdkStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role" -> "CdkStack/DataBucket" [
+    dir = "both";
+  ];
+}

@@ -1,0 +1,41 @@
+./.ruff_cache
+./.venv/
+
+# CDK
+cdk/node_modules/
+cdk.out/
+cdk/*.js
+cdk/*.d.ts
+
+# Lambda dependencies
+cdk/lambda_source_data/
+cdk/numpy.libs/
+f2py.py
+numpy-config.py
+cdk/bin/f2py*
+cdk/bin/numpy-config*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# AWS
+.aws-sam/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+/cdk/packages.json
